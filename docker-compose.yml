@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  web:
+    container_name: forum_service_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - $PWD:/home/app:delegated
+    ports:
+      - 5001:3000
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=mongodb://root:password@db:27017
+    depends_on:  
+      - db
+      - redis
+
+  db:
+    container_name: forum_service_mongo
+    image: mongo:4.0.8
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ~/.mongo-volume/karibu_forum_service:/data/db
+    ports:
+      - 9001:27017
+
+  redis:
+    container_name: forum_redis
+    image: redis:5-alpine
+
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: ./infra/Dockerfile-worker-dev
+  #   volumes:
+  #     - $PWD:/home/app:delegated
+  #   depends_on:
+  #     - redis
+  #   environment:
+  #     - DEVELOP
+  #     - AUTORELOAD
+  #     - APP_ENV=development
+  #     - DATABASE_URL=mongodb://root:password@db:27017/karibu_forum
