@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import Column, Index
+from sqlalchemy import Column, Index, ForeignKey, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, validates
 
@@ -8,10 +8,8 @@ from forum_service.db.base import Base
 from forum_service.db.types import Text, UTCDateTime
 
 
-class Forum(BaseModelMixin, Base):
-    __tablename__ = 'forum'
+class ForumData(BaseModelMixin, Base):
+    __tablename__ = 'forum_data'
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = Column(Text)
-    description = Column(Text)
-    posts = relationship("Post")
+    user_id = Column(UUID, ForeignKey('forum.id'), primary_key=True)
+    subscriber_count = Column(Integer)
