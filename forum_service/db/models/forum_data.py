@@ -11,5 +11,6 @@ from forum_service.db.types import Text, UTCDateTime
 class ForumData(BaseModelMixin, Base):
     __tablename__ = 'forum_data'
 
-    user_id = Column(UUID, ForeignKey('forum.id'), primary_key=True)
+    forum_id = Column(UUID, ForeignKey('forum.id'), primary_key=True)
     subscriber_count = Column(Integer)
+    created_by = Column(UUID)
