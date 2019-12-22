@@ -1,9 +1,9 @@
 import click
 
-from user_service.commands.db import db
-from user_service.commands import seed
-from user_service.commands.server import run_server
-from user_service import app
+from forum_service.commands.db import db
+from forum_service.commands import seed
+from forum_service.commands.server import run_server
+from forum_service import app
 
 
 @click.group()

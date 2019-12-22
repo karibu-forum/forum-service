@@ -1,11 +1,11 @@
 import click
 import subprocess
-from user_service import app
+from forum_service import app
 
 # import alembic.config
 
 
-DB_NAME = 'user_service'
+DB_NAME = 'karibu_forum'
 
 @click.group()
 def db():
@@ -33,7 +33,7 @@ def create_db(drop, create_tables):
         _drop_db()
     _create_db()
     if create_tables:
-        from user_service.db.base import Base, get_engine
+        from forum_service.db.base import Base, get_engine
         engine = get_engine()
         conn = engine.connect()
         print('--> Creating tables')
@@ -43,7 +43,7 @@ def create_db(drop, create_tables):
 @click.command(name='reset')
 @app.app_context()
 def reset_db():
-    from user_service.db.base import Base, get_engine
+    from forum_service.db.base import Base, get_engine
     engine = get_engine()
     conn = engine.connect()
 

@@ -1,6 +1,6 @@
 import click
 
-from user_service.api.rest.server import app as flask_app
+from forum_service.api.rest.server import app as flask_app
 
 
 @click.command(name='runserver')

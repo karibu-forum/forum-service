@@ -19,11 +19,7 @@ RUN pipenv install --system --dev
 
 RUN apk del build-deps
 
-COPY ./entrypoint.sh /home/app/entrypoint.sh
-RUN chmod 755 /home/app/entrypoint.sh
-
-# add app
 COPY . /home/app
 
 # run server
-CMD ["/home/app/entrypoint.sh"]
+CMD ["/home/app/infra/run-worker-dev.sh"]

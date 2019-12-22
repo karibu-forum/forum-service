@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from user_service.app.configuration import config
+from forum_service.app.configuration import config
 
 
 Base = declarative_base()
@@ -26,7 +26,7 @@ def initialize_database():
     engine = create_engine(database_url, **connection_args)
     session_factory = sessionmaker(bind=engine, autocommit=False, autoflush=False)
     Session = scoped_session(session_factory)
-    from user_service.db import models   # noqa
+    from forum_service.db import models   # noqa
 
 
 def get_engine():

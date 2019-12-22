@@ -1,4 +1,4 @@
-from user_service.lib.exceptions import BaseException
+from forum_service.lib.exceptions import BaseException
 
 
 class DatabaseError(BaseException):

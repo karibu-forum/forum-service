@@ -1,4 +1,4 @@
-from user_service.lib.exceptions import BaseException
+from forum_service.lib.exceptions import BaseException
 
 
 class RepositoryError(BaseException):
@@ -23,20 +23,3 @@ class UpdateError(RepositoryError):
 
 class DeleteError(MutationError):
     pass
-
-
-class UserNotFound(NotFoundError):
-    pass
-
-
-class UpdateUserError(UpdateError):
-    pass
-
-
-class UpdateUserNotFoundError(UpdateError):
-    pass
-
-
-class CreateUserError(CreateError):
-    pass
-

@@ -2,8 +2,8 @@ from contextlib import contextmanager
 
 from sqlalchemy.exc import SQLAlchemyError
 
-from user_service.db.exceptions import MutationError
-from user_service.db import base
+from forum_service.db.exceptions import MutationError
+from forum_service.db import base
 
 
 def get_session():

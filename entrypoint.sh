@@ -1,11 +1,11 @@
 #!/bin/sh
 
-echo "waiting for mongo..."
+echo "waiting for postgres..."
 
-while ! nc -z db 27017; do
+while ! nc -z db 5432; do
   sleep 0.1
 done
 
-echo "mongo started"
+echo "postgresql started"
 
 python manage.py runserver

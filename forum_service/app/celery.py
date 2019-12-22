@@ -2,7 +2,7 @@ from celery import Celery
 from celery.signals import task_postrun
 
 include_modules = [
-    'user_service.api.rest.user',
+    'forum_service.api.rest.forum',
 ]
 
 celery_config = dict(
@@ -25,7 +25,7 @@ celery = Celery(
 celery.conf.update(**celery_config)
 @task_postrun.connect
 def task_postrun_handler(sender=None, headers=None, body=None, **kwargs):
-    from user_service.db.session import get_session
+    from forum_service.db.session import get_session
 
     # Clear DB session between tasks
     session = get_session()

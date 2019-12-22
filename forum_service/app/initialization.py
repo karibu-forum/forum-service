@@ -2,10 +2,10 @@ import os
 from flask import Flask
 from contextlib import ContextDecorator
 
-from user_service.db.base import initialize_database
-from user_service.app import celery
-from user_service.app.redis import redis_conn
-from user_service.app.logging import setup_logging
+from forum_service.db.base import initialize_database
+from forum_service.app import celery
+from forum_service.app.redis import redis_conn
+from forum_service.app.logging import setup_logging
 import logging
 
 _app_initialized = False

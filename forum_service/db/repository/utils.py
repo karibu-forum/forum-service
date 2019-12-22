@@ -1,4 +1,4 @@
-from user_service.db.repository.exceptions import NotFoundError, UpdateError
+from forum_service.db.repository.exceptions import NotFoundError, UpdateError
 
 
 def validate_write_fields(raw_data, writable_fields, exception_cls=UpdateError):

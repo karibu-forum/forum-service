@@ -1,3 +1,3 @@
-from user_service.app.worker import celery
+from forum.app.worker import celery
 
 task = celery.task

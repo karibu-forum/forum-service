@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request, abort
 
 from forum_service.app import initialize, config
 from forum_service.api.rest import exceptions
+from forum_service.db.session import get_session
 
 import logging
 
@@ -19,7 +20,7 @@ def create_app(force=False):
     app = Flask(__name__, instance_relative_config=True)
     app.config['TESTING'] = False
 
-    from forum_service.api.rest.user import forum_api
+    from forum_service.api.rest.forum import forum_api
     app.register_blueprint(forum_api)
 
     @app.before_request
@@ -41,5 +42,11 @@ def create_app(force=False):
     @app.route('/health')
     def health():
         return 'OK'
+
+    @app.after_request
+    def db_conn_cleanup(response):
+        session = get_session()
+        session.remove()
+        return response
 
     return app
