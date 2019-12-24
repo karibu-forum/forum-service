@@ -12,6 +12,6 @@ class Forum(BaseModelMixin, Base):
     __tablename__ = 'forum'
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = Column(Text)
+    name = Column(Text, unique=True)
     description = Column(Text)
     posts = relationship("Post")

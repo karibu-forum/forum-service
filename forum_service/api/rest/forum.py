@@ -9,3 +9,13 @@ forum_api = Blueprint('forum', __name__)
 @forum_api.route('/ping', methods=['GET'])
 def test():
     return 'pong', 200
+
+
+@forum_api.route('/forum/get', methods=['GET'])
+def forum_get():
+    return 'pong', 200
+
+
+@forum_api.route('/forum/create', methods=['Post'])
+def forum_create():
+    return 'pong', 200

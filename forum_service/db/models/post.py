@@ -16,4 +16,5 @@ class Post(BaseModelMixin, Base):
     content = Column(Text)
     author_id = Column(UUID, nullable=False)
     forum_id = Column(UUID, ForeignKey('forum.id'))
+    last_edited_at = Column(UTCDateTime)
     forum = relationship("Forum", back_populates="posts")
