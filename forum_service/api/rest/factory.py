@@ -21,7 +21,9 @@ def create_app(force=False):
     app.config['TESTING'] = False
 
     from forum_service.api.rest.forum import forum_api
-    app.register_blueprint(forum_api)
+    from forum_service.api.rest.post import post_api
+    app.register_blueprint(forum_api, url_prefix='/v1')
+    app.register_blueprint(post_api, url_prefix='/v1')
 
     @app.before_request
     def request_check_api_key():
